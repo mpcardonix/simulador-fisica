@@ -4,57 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de física</title>
+
     <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/style.css">
+
     <script src="src/js/chart.umd.min.js"></script>
+    <script src="src/js/ChartHandler.js"></script>
 </head>
 <body>
-    <h2 class="text-center">Simulador de física</h2>
+    <h2 class="text-center mt-5">Simulador de física</h2>
 
     <div class="container mt-5">
-        <canvas id="myChart"></canvas>
+            <canvas id="myChart"></canvas>
+        
+            <div class="container mt-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-center fw-bold">
+                            <td>Nome</td>
+                            <td>T-inicial</td>
+                            <td>T-fusão</td>
+                            <td>T-ebulição</td>
+                            <td>T-final</td>
+                            <td>Excluir</td>
+                            <!--<td>Cor</td>-->
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td><input type="text" class="form-control text-center" value="Água"></td>
+                            <td><input type="text" class="form-control text-center" value="-20"></td>
+                            <td><input type="text" class="form-control text-center" value="0"></td>
+                            <td><input type="text" class="form-control text-center" value="100"></td>
+                            <td><input type="text" class="form-control text-center" value="120"></td>
+                            <td><button class="btn btn-danger">Excluir</button></td>
+                        </tr>
+                        <tr id="lastRow">
+                            <td colspan="10"><button id="addMaterial" class="btn btn-success w-100" value="Adicionar novo material"><h5>Adicionar novo material</h5></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
     </div>
 
-    <script>
-        //https://www.youtube.com/watch?v=sE08f4iuOhA
 
-        //labels -> quantidade de calor
-        //
 
-        const myChart = document.getElementById("myChart").getContext('2d');
-        const data = {
-            labels: [0, 10, 20, 30, 40, 50, 60],
-            datasets: [{
-                label: 'Calor sensível e latente',
-                data: [0, 20, 20, 40, 40, 40, 60],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
-        }
 
-        let user_min = 0;
-        let user_max = 0;
-        let min = -20 + user_min;
-        let max = 100 + user_max;
-        const options = {
-            scales: {
-                y: {
-                    min: min,
-                    max: max,
 
-                    ticks: {
-                        stepSize: 10
-                    }
-                }
-            }
-        }
 
-        const lineChart = new Chart(myChart, {
-            type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-            data: data,
-            options: options
-        })
-
-    </script>
+    <script src="src/js/index.js"></script>
 </body>
 </html>
