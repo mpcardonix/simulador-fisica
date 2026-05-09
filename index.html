@@ -12,13 +12,13 @@
     <script src="src/js/ChartHandler.js"></script>
 </head>
 <body>
-    <h2 class="text-center mt-5">Simulador de física</h2>
+    <h2 class="container text-center mt-5 w-100">Simulador de física</h2>
 
     <div class="container mt-5">
             <canvas id="myChart"></canvas>
         
-            <div class="container mt-4">
-                <table class="table table-striped">
+            <div class="container mt-4 table-responsive">
+                <table class="table table-responsive table-striped">
                     <thead>
                         <tr class="text-center fw-bold">
                             <td>Nome</td>
@@ -26,21 +26,22 @@
                             <td>T-fusão</td>
                             <td>T-ebulição</td>
                             <td>T-final</td>
+                            <td>Cor</td>
                             <td>Excluir</td>
-                            <!--<td>Cor</td>-->
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <tr>
+                        <!--<tr>
                             <td><input type="text" class="form-control text-center" value="Água"></td>
-                            <td><input type="text" class="form-control text-center" value="-20"></td>
-                            <td><input type="text" class="form-control text-center" value="0"></td>
-                            <td><input type="text" class="form-control text-center" value="100"></td>
-                            <td><input type="text" class="form-control text-center" value="120"></td>
+                            <td><input type="number" class="form-control text-center" value="-20"></td>
+                            <td><input type="number" class="form-control text-center" value="0"></td>
+                            <td><input type="number" class="form-control text-center" value="100"></td>
+                            <td><input type="number" class="form-control text-center" value="120"></td>
+                            <td><input type="color" class="form-control text-center"></td>
                             <td><button class="btn btn-danger">Excluir</button></td>
-                        </tr>
+                        </tr>-->
                         <tr id="lastRow">
-                            <td colspan="10"><button id="addMaterial" class="btn btn-success w-100" value="Adicionar novo material"><h5>Adicionar novo material</h5></button></td>
+                            <td colspan="10"><button id="addMaterial" class="btn btn-success w-100 fs-5" value="Adicionar novo material">Adicionar novo material</button></td>
                         </tr>
                     </tbody>
                 </table>
