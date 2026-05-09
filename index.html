@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de física</title>
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    <script src="src/js/chart.umd.min.js"></script>
+</head>
+<body>
+    <h2 class="text-center">Simulador de física</h2>
+
+    <div class="container mt-5">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        //https://www.youtube.com/watch?v=sE08f4iuOhA
+
+        //labels -> quantidade de calor
+        //
+
+        const myChart = document.getElementById("myChart").getContext('2d');
+        const data = {
+            labels: [0, 10, 20, 30, 40, 50, 60],
+            datasets: [{
+                label: 'Calor sensível e latente',
+                data: [0, 20, 20, 40, 40, 40, 60],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        }
+
+        let user_min = 0;
+        let user_max = 0;
+        let min = -20 + user_min;
+        let max = 100 + user_max;
+        const options = {
+            scales: {
+                y: {
+                    min: min,
+                    max: max,
+
+                    ticks: {
+                        stepSize: 10
+                    }
+                }
+            }
+        }
+
+        const lineChart = new Chart(myChart, {
+            type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: data,
+            options: options
+        })
+
+    </script>
+</body>
+</html>
