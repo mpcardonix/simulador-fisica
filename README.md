@@ -20,8 +20,17 @@ class MaterialGraph(){
 	color = this.getRandomColor()
 }
 ```
+
+OBS: O calor latente é usado apenas um valor a fins didáticos. Em um cenário real, a substância teria diferentes valores de calor latente conforme o processo pelo qual está passando. O mesmo também se aplica ao calor específico.
   
 
 ## Ideias que podem ser implementadas em futuras atualizações:
 
 - Validação para temperatura Kelvin não ter valor negativo
+
+## Planejamento (para o desenvolvedor):
+
+- Tirar temperatura final (será calculada automaticamente)
+- Área para colocar massa, calor específico e latente
+- Calcular tragetória no gráfico (função dentro do MaterialGraph) e salvar
+- Preencher incógnita? talvez

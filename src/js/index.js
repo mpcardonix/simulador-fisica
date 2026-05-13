@@ -11,10 +11,12 @@ const data = {
     datasets: dataset.getCompleteDataset()
 }
 
-let t_min = -20;
+let t_min = -50;
 let t_max = 120;
+let t_stepsize = 10;
 let q_min = 0;
-let q_max = 50;
+let q_max = 200;
+let q_stepsize = 50;
 
 const tMin = document.getElementById("tMin")
 const tMax = document.getElementById("tMax")
@@ -29,6 +31,7 @@ tMin.addEventListener("change", (event) => {
 })
 tMax.addEventListener("change", (event) => {
     lineChart.options.scales.y.max = Number(tMax.value);
+    dataset.t_max,ax = Number(tMax.value)
     lineChart.update()
 })
 tUnit.addEventListener("change", (event) => {
@@ -57,14 +60,16 @@ const options = {
             max: q_max,
 
             ticks: {
-                stepSize: 10
+                stepSize: q_stepsize
             },
 
 
             title: {
                 display: true,
-                text: 'Quantidade de calor (Cal)'
-            }
+                text: 'Quantidade de calor (KCal)'
+            },
+
+            type : 'linear'
         },
         
         y: {
@@ -72,7 +77,7 @@ const options = {
             max: t_max,
 
             ticks: {
-                stepSize: 10
+                stepSize: t_stepsize
             },
 
             title: {
@@ -112,9 +117,12 @@ function addRow(newMaterial = new MaterialGraph()){ //Retorna novo material
         <td><input type="text" name="tInicial" class="form-control text-center" value="`+newMaterial.tInicial+`"></td>
         <td><input type="text" name="tFusao" class="form-control text-center" value="`+newMaterial.tFusao+`"></td>
         <td><input type="text" name="tEbulicao" class="form-control text-center" value="`+newMaterial.tEbulicao+`"></td>
-        <td><input type="text" name="tFinal" class="form-control text-center" value="`+newMaterial.tFinal+`"></td>
+        <td><input type="text" name="mass" class="form-control text-center" value="`+newMaterial.mass+`"></td>
+        <td><input type="text" name="calor_especifico" class="form-control text-center" value="`+newMaterial.calor_especifico+`"></td>
+        <td><input type="text" name="calor_latente" class="form-control text-center" value="`+newMaterial.calor_latente+`"></td>
         <td><input type="color" name="color" class="form-control text-center" value="`+ newMaterial.color +`"></td>
         <td><button class="btn btn-danger">Excluir</button></td>`
+    //<td><input type="text" name="tFinal" class="form-control text-center" value="`+newMaterial.tFinal+`"></td>
     tableBody.insertBefore(row, lastRow)
 
     const inputRow = document.getElementById(rowId).querySelectorAll('input');
@@ -152,14 +160,16 @@ function addRow(newMaterial = new MaterialGraph()){ //Retorna novo material
 addMaterial.addEventListener("click", () => addRow())
 
 function init(){
-    agua = new MaterialGraph("Água", -20, 0, 100, 120, 'rgb(71, 149, 221)')
+    agua = new MaterialGraph("Água", -20, 0, 100, 100, 1, 80, 'rgb(71, 149, 221)')
+    alcool = new MaterialGraph("Álcool Etílico", -150, -114, 78, 100, 0.61, 115, 'rgb(38, 201, 146)')
     addRow(agua)
+    addRow(alcool)
 
     tMin.value = t_min;
     tMax.value = t_max;
 
     qMin.value = q_min;
-    qMin.value = q_max; 
+    qMax.value = q_max; 
 }
 
 init()
