@@ -11,24 +11,65 @@ const data = {
     datasets: dataset.getCompleteDataset()
 }
 
-let user_min = 0;
-let user_max = 0;
-let min = -20 + user_min;
-let max = 150 + user_max;
+let t_min = -20;
+let t_max = 120;
+let q_min = 0;
+let q_max = 50;
+
+const tMin = document.getElementById("tMin")
+const tMax = document.getElementById("tMax")
+const tUnit = document.getElementById("tUnit")
+const qMin = document.getElementById("qMin")
+const qMax = document.getElementById("qMax")
+const qUnit = document.getElementById("qUnit")
+
+tMin.addEventListener("change", (event) => {
+    lineChart.options.scales.y.min = Number(tMin.value);
+    lineChart.update()
+})
+tMax.addEventListener("change", (event) => {
+    lineChart.options.scales.y.max = Number(tMax.value);
+    lineChart.update()
+})
+tUnit.addEventListener("change", (event) => {
+    lineChart.options.scales.y.title.text = "Temperatura (" + String(tUnit.value) + ")";
+    lineChart.update()
+})
+qMin.addEventListener("change", (event) => {
+    lineChart.options.scales.x.min = Number(qMin.value);
+    lineChart.update()
+})
+qMax.addEventListener("change", (event) => {
+    lineChart.options.scales.x.max = Number(qMax.value);
+    lineChart.update()
+})
+qUnit.addEventListener("change", (event) => {
+    lineChart.options.scales.x.title.text = "Quantidade de calor (" + String(qUnit.value) + ")";
+    lineChart.update()
+})
+
 const options = {
     responsive: true,
 
     scales: {
         x: {
+            min: q_min,
+            max: q_max,
+
+            ticks: {
+                stepSize: 10
+            },
+
+
             title: {
                 display: true,
-                text: 'Quantidade de calor'
+                text: 'Quantidade de calor (Cal)'
             }
         },
         
         y: {
-            min: min,
-            max: max,
+            min: t_min,
+            max: t_max,
 
             ticks: {
                 stepSize: 10
@@ -110,11 +151,15 @@ function addRow(newMaterial = new MaterialGraph()){ //Retorna novo material
 
 addMaterial.addEventListener("click", () => addRow())
 
-
-
 function init(){
     agua = new MaterialGraph("Água", -20, 0, 100, 120, 'rgb(71, 149, 221)')
     addRow(agua)
+
+    tMin.value = t_min;
+    tMax.value = t_max;
+
+    qMin.value = q_min;
+    qMin.value = q_max; 
 }
 
 init()

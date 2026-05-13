@@ -12,40 +12,84 @@
     <script src="src/js/ChartHandler.js"></script>
 </head>
 <body>
-    <h2 class="container text-center mt-5 w-100">Simulador de física</h2>
+    <p class="container text-center mt-5 w-100 display-5 title">Simulador de física</p>
+
 
     <div class="container mt-5">
-            <canvas id="myChart"></canvas>
-        
-            <div class="container mt-4 table-responsive">
-                <table class="table table-responsive table-striped">
-                    <thead>
-                        <tr class="text-center fw-bold">
-                            <td>Nome</td>
-                            <td>T-inicial</td>
-                            <td>T-fusão</td>
-                            <td>T-ebulição</td>
-                            <td>T-final</td>
-                            <td>Cor</td>
-                            <td>Excluir</td>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <!--<tr>
-                            <td><input type="text" class="form-control text-center" value="Água"></td>
-                            <td><input type="number" class="form-control text-center" value="-20"></td>
-                            <td><input type="number" class="form-control text-center" value="0"></td>
-                            <td><input type="number" class="form-control text-center" value="100"></td>
-                            <td><input type="number" class="form-control text-center" value="120"></td>
-                            <td><input type="color" class="form-control text-center"></td>
-                            <td><button class="btn btn-danger">Excluir</button></td>
-                        </tr>-->
-                        <tr id="lastRow">
-                            <td colspan="10"><button id="addMaterial" class="btn btn-success w-100 fs-5" value="Adicionar novo material">Adicionar novo material</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm title rounded"><p class="display-6 text-center">Configurações da tabela</p></div>
             </div>
+
+            <div class="row">
+                <div class="col-sm subtitle rounded mt-2 text-center"><h4>Unidades de medida</h4></div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-sm subtitle rounded me-3">
+                        <p class="fw-bold text-center subtitle-dark">Temperatura: </p>
+                        <input id="tMin" class="form-control mt-2" type="text" placeholder="Mínimo">
+                        <input id="tMax" class="form-control mt-2" type="text" placeholder="Máximo">
+                        <select id="tUnit" class="form-control mt-2">
+                            <option value="C">Celsius</option>
+                            <option value="K">Kelvin</option>
+                            <option value="F">Fahrenheit</option>
+                        </select>
+                </div>
+
+                <div class="col-sm subtitle rounded">
+                    <p class="fw-bold text-center subtitle-dark">Quantidade de calor: </p>
+                    <input id="qMin" class="form-control mt-2" type="text" placeholder="Mínimo">
+                    <input id="qMax" class="form-control mt-2" type="text" placeholder="Máximo">
+                    <select id="qUnit" class="form-control mt-2" id="">
+                        <option value="Cal">Caloria</option>
+                        <option value="J">Joule</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <canvas class="mt-5" id="myChart"></canvas>
+    
+        <div class="container mt-4 table-responsive">
+            <table class="table table-responsive table-striped">
+                <thead>
+                    <tr class="text-center fw-bold">
+                        <td>Nome</td>
+                        <td>T-inicial</td>
+                        <td>T-fusão</td>
+                        <td>T-ebulição</td>
+                        <td>T-final</td>
+                        <td>Cor</td>
+                        <td>Excluir</td>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!--<tr>
+                        <td><input type="text" class="form-control text-center" value="Água"></td>
+                        <td><input type="number" class="form-control text-center" value="-20"></td>
+                        <td><input type="number" class="form-control text-center" value="0"></td>
+                        <td><input type="number" class="form-control text-center" value="100"></td>
+                        <td><input type="number" class="form-control text-center" value="120"></td>
+                        <td><input type="color" class="form-control text-center"></td>
+                        <td><button class="btn btn-danger">Excluir</button></td>
+                    </tr>-->
+                    <tr id="lastRow">
+                        <td colspan="10"><button id="addMaterial" class="btn btn-success w-100 fs-5" value="Adicionar novo material">Adicionar novo material</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row rounded title">
+                <p class="col-sm display-5">Como usar</p>
+            </div>
+            <div class="row">
+                <p class="col-sm mt-3">O sistema (...)</p>
+            </div>
+        </div>
     </div>
 
 

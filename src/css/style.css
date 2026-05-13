@@ -1,3 +1,15 @@
 #myChart{
     width: 500px;
 }
+
+.title{
+    background-color: rgb(226, 226, 226);
+}
+
+.subtitle{
+    background-color: rgb(250, 236, 234);
+}
+
+.subtitle-dark{
+    background-color: rgb(223, 213, 211);
+}
