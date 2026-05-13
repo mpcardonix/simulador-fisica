@@ -1,21 +1,21 @@
 class MaterialGraph{
-    static count = -1;
+    static count = 0;
 
-    constructor(){
+    constructor(n = `Novo material (${MaterialGraph.count})`, ti = 0, tfu = 0, te = 0, tfi =0, c = this.getRandomColor()){
         MaterialGraph.count++;
 
-        this.name = `Novo material (${MaterialGraph.count})`;
-        this.tInicial = 0;
-        this.tFusao = 0;
-        this.tEbulicao = 0;
-        this.tFinal = 0;
-        this.color = this.getRandomColor()
-        this.pos = MaterialGraph.count;
+        this.name = n
+        this.tInicial = ti
+        this.tFusao = tfu
+        this.tEbulicao = te
+        this.tFinal = tfi
+        this.color = c
+        this.id = MaterialGraph.count;
 
-        this.updateDataset()
+        this.getDataset()
     }
 
-    updateDataset(){
+    getDataset(){
         this.name = String(this.name)
         this.tInicial = Number(this.tInicial)
         this.tFusao = Number(this.tFusao)
@@ -23,7 +23,7 @@ class MaterialGraph{
         this.tFinal = Number(this.tFinal)
         this.color = String(this.color)
 
-        this.dataset = {
+        let dataset = {
             label: this.name,
             data: [this.tInicial, this.tFusao, this.tFusao, this.tEbulicao, this.tEbulicao, this.tFinal],
             fill: false,
@@ -31,7 +31,7 @@ class MaterialGraph{
             tension: 0.1
         }
 
-        //console.log(this.dataset)
+        return dataset
     }
 
     getRandomColor(){
@@ -40,4 +40,18 @@ class MaterialGraph{
     }
 }
 
-//add event listener dentro do próprio add event listener
+
+class DatasetHandler{
+    material_list = []
+
+    getCompleteDataset(){
+        let dataset_array = []
+        //console.log(this.material_list)
+
+        this.material_list.forEach(material => {
+            dataset_array.push(material.getDataset())
+        });
+
+        return dataset_array
+    }
+}
