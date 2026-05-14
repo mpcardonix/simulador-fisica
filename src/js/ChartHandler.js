@@ -5,7 +5,7 @@ class MaterialGraph{
         MaterialGraph.count++;
 
         this.name = n
-        this.tInicial = ti //celsius
+        //this.tInicial = ti //celsius
         this.tFusao = tfu //celsius
         this.tEbulicao = te //celsius
         //this.tFinal = tfi //celsius
@@ -20,9 +20,9 @@ class MaterialGraph{
         this.getDataset()
     }
 
-    getDataset(t_max = 200){
+    getDataset(t_min = -50, t_max = 120, q_min = 0, q_max = 200 * 1000){
         this.name = String(this.name)
-        this.tInicial = Number(this.tInicial)
+        //this.tInicial = Number(this.tInicial)
         this.tFusao = Number(this.tFusao)
         this.tEbulicao = Number(this.tEbulicao)
         this.mass = Number(this.mass)
@@ -49,10 +49,16 @@ class MaterialGraph{
         }*/
 
         let coords_array = [];
-        let q = 0;
-        coords_array.push({x : q/1000, y : this.tInicial})
+        //let q = this.mass*this.calor_especifico*-1*(this.tFusao - t_min);
 
-        q+= this.mass*this.calor_especifico*(this.tFusao - this.tInicial)
+        let q = 0
+        //console.log(this.tFusao - t_min)
+
+        //Qualquer coisa é só colocar q/1000 no X
+        //let q_start = this.mass*this.calor_especifico*(this.tFusao - t_min)
+        coords_array.push({x : q/1000, y : t_min})
+
+        q+= this.mass*this.calor_especifico*(this.tFusao - t_min)
         coords_array.push({x : q/1000, y : this.tFusao})
 
         q+= this.mass*this.calor_latente
@@ -89,14 +95,17 @@ class MaterialGraph{
 
 class DatasetHandler{
     material_list = []
+    t_min = -50
     t_max = 120
+    q_min = 0
+    q_max = 200
 
     getCompleteDataset(){
         let dataset_array = []
         //console.log(this.material_list)
 
         this.material_list.forEach(material => {
-            dataset_array.push(material.getDataset(t_max))
+            dataset_array.push(material.getDataset(this.t_min, this.t_max, this.q_min * 1000, this.q_max  * 1000))
         });
 
         //console.log(dataset_array)

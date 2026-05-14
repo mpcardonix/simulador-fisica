@@ -30,7 +30,7 @@ OBS: O calor latente é usado apenas um valor a fins didáticos. Em um cenário 
 
 ## Planejamento (para o desenvolvedor):
 
-- Tirar temperatura final (será calculada automaticamente)
+- Tirar temperatura final  e inicial (será calculada automaticamente)
 - Área para colocar massa, calor específico e latente
 - Calcular tragetória no gráfico (função dentro do MaterialGraph) e salvar
 - Preencher incógnita? talvez

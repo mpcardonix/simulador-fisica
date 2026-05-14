@@ -7,7 +7,7 @@ const myChart = document.getElementById("myChart").getContext('2d')
 let dataset = new DatasetHandler()
 
 const data = {
-    labels: [0, 10, 20, 30, 40, 50],
+    labels: [],
     datasets: dataset.getCompleteDataset()
 }
 
@@ -27,11 +27,14 @@ const qUnit = document.getElementById("qUnit")
 
 tMin.addEventListener("change", (event) => {
     lineChart.options.scales.y.min = Number(tMin.value);
+    dataset.t_min = Number(tMin.value)
+    lineChart.data.datasets = dataset.getCompleteDataset()
     lineChart.update()
 })
 tMax.addEventListener("change", (event) => {
     lineChart.options.scales.y.max = Number(tMax.value);
-    dataset.t_max,ax = Number(tMax.value)
+    dataset.t_max = Number(tMax.value)
+    lineChart.data.datasets = dataset.getCompleteDataset()
     lineChart.update()
 })
 tUnit.addEventListener("change", (event) => {
@@ -40,10 +43,14 @@ tUnit.addEventListener("change", (event) => {
 })
 qMin.addEventListener("change", (event) => {
     lineChart.options.scales.x.min = Number(qMin.value);
+    dataset.q_min = Number(qMin.value)
+    lineChart.data.datasets = dataset.getCompleteDataset()
     lineChart.update()
 })
 qMax.addEventListener("change", (event) => {
     lineChart.options.scales.x.max = Number(qMax.value);
+    dataset.q_max = Number(qMax.value)
+    lineChart.data.datasets = dataset.getCompleteDataset()
     lineChart.update()
 })
 qUnit.addEventListener("change", (event) => {
@@ -114,7 +121,6 @@ function addRow(newMaterial = new MaterialGraph()){ //Retorna novo material
     console.log(rowId)
     row.innerHTML = `
         <td><input type="text" name="name" class="form-control text-center" value="`+ newMaterial.name +`"></td>
-        <td><input type="text" name="tInicial" class="form-control text-center" value="`+newMaterial.tInicial+`"></td>
         <td><input type="text" name="tFusao" class="form-control text-center" value="`+newMaterial.tFusao+`"></td>
         <td><input type="text" name="tEbulicao" class="form-control text-center" value="`+newMaterial.tEbulicao+`"></td>
         <td><input type="text" name="mass" class="form-control text-center" value="`+newMaterial.mass+`"></td>
@@ -122,6 +128,7 @@ function addRow(newMaterial = new MaterialGraph()){ //Retorna novo material
         <td><input type="text" name="calor_latente" class="form-control text-center" value="`+newMaterial.calor_latente+`"></td>
         <td><input type="color" name="color" class="form-control text-center" value="`+ newMaterial.color +`"></td>
         <td><button class="btn btn-danger">Excluir</button></td>`
+    //<td><input type="text" name="tInicial" class="form-control text-center" value="`+newMaterial.tInicial+`"></td>
     //<td><input type="text" name="tFinal" class="form-control text-center" value="`+newMaterial.tFinal+`"></td>
     tableBody.insertBefore(row, lastRow)
 
