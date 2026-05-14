@@ -95,11 +95,41 @@ const options = {
     }
 }
 
+const negativeFilter = {
+    id: 'negativeFilter',
+
+    beforeDraw(chart){
+        const{
+            ctx,
+            chartArea,
+            scales: {y}
+        } = chart;
+
+        const zeroY = y.getPixelForValue(0);
+
+        ctx.save();
+
+        ctx.fillStyle = `rgb(240, 240, 240)`
+
+        ctx.fillRect(
+            chartArea.left,
+            zeroY,
+            chartArea.right - chartArea.left,
+            chartArea.bottom - zeroY
+        );
+
+        ctx.restore();
+    }
+}
+
+
 const lineChart = new Chart(myChart, {
     type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
     data: data,
-    options: options
+    options: options,
+    plugins: [negativeFilter]
 })
+
 
 const tableBody = document.getElementById("tableBody")
 const lastRow = document.getElementById("lastRow")
