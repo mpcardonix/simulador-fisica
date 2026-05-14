@@ -13,10 +13,11 @@ Pode ser acessado [clicando este link](https://mpcardonix.github.io/simulador-fi
 ```
 class MaterialGraph(){
 	name="Água"
-	tInicial = -20 		#ponto inicial do gráfico
 	tFusao = 0
 	tEbulicao = 100
-	tFinal = 120 		#ponto final do gráfico
+	mass = 0
+	calor_especifico = 0
+	calor_latente = 0
 	color = this.getRandomColor()
 }
 ```
@@ -27,10 +28,4 @@ OBS: O calor latente é usado apenas um valor a fins didáticos. Em um cenário 
 ## Ideias que podem ser implementadas em futuras atualizações:
 
 - Validação para temperatura Kelvin não ter valor negativo
-
-## Planejamento (para o desenvolvedor):
-
-- Tirar temperatura final  e inicial (será calculada automaticamente)
-- Área para colocar massa, calor específico e latente
-- Calcular tragetória no gráfico (função dentro do MaterialGraph) e salvar
 - Preencher incógnita? talvez
